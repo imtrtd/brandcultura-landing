@@ -2,7 +2,6 @@
 
 import { useState, type FormEvent } from 'react'
 import {
-  Button,
   FormControl,
   TextInput,
   Textarea,
@@ -10,6 +9,7 @@ import {
 } from '@primer/react'
 import { ArrowRightIcon, CheckIcon } from '@primer/octicons-react'
 import { Section, SectionTag, Mono } from './primitives'
+import { AccentButton } from './accent-button'
 
 export function Contact() {
   const [sent, setSent] = useState(false)
@@ -107,26 +107,14 @@ export function Contact() {
                   />
                 </FormControl>
 
-                <Button
+                <AccentButton
                   type="submit"
-                  variant="primary"
                   size="large"
                   block
                   trailingVisual={ArrowRightIcon}
-                  sx={{
-                    backgroundColor: 'var(--bc-accent)',
-                    color: 'var(--bc-accent-ink)',
-                    borderColor: 'var(--bc-accent)',
-                    fontWeight: 600,
-                    '&:hover:not([disabled])': {
-                      backgroundColor: 'var(--bc-accent)',
-                      filter: 'brightness(1.05)',
-                      borderColor: 'var(--bc-accent)',
-                    },
-                  }}
                 >
                   Anfrage senden
-                </Button>
+                </AccentButton>
               </div>
             </form>
           )}
