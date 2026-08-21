@@ -1,0 +1,151 @@
+/* Primer Primitives — design tokens (CSS custom properties).
+   These imports establish the token + theme baseline that every Primer
+   component and all of our own CSS reads from. Order matters: base + functional
+   tokens first, then the per-theme functional color sets. */
+@import '@primer/primitives/dist/css/base/size/size.css';
+@import '@primer/primitives/dist/css/base/typography/typography.css';
+@import '@primer/primitives/dist/css/base/motion/motion.css';
+@import '@primer/primitives/dist/css/functional/size/border.css';
+@import '@primer/primitives/dist/css/functional/size/breakpoints.css';
+@import '@primer/primitives/dist/css/functional/size/size-coarse.css';
+@import '@primer/primitives/dist/css/functional/size/size-fine.css';
+@import '@primer/primitives/dist/css/functional/size/size.css';
+@import '@primer/primitives/dist/css/functional/size/viewport.css';
+@import '@primer/primitives/dist/css/functional/typography/typography.css';
+
+@import '@primer/primitives/dist/css/functional/themes/light.css';
+@import '@primer/primitives/dist/css/functional/themes/dark.css';
+@import '@primer/primitives/dist/css/functional/themes/dark-dimmed.css';
+
+/* ------------------------------------------------------------------ */
+/* brandcultura brand tokens — the site's art-directed palette + type. */
+/* Centralized here so components reference var(--bc-*) instead of raw  */
+/* hex values, keeping the Primer "tokens only" contract intact.        */
+/* ------------------------------------------------------------------ */
+:root {
+  --bc-bg: #0a0a0a;
+  --bc-bg-2: #0c0c0c;
+  --bc-surface: #111111;
+  --bc-surface-2: #171717;
+  --bc-line: rgba(255, 255, 255, 0.09);
+  --bc-line-strong: rgba(255, 255, 255, 0.16);
+  --bc-fg: #fafafa;
+  --bc-fg-soft: #ebe8df;
+  --bc-fg-muted: #a1a1a1;
+  --bc-fg-subtle: #6f6f6f;
+  --bc-accent: #d2ec3d;
+  --bc-accent-dim: rgba(210, 236, 61, 0.14);
+  --bc-accent-ink: #0c0f02;
+  --bc-red: #e94a2f;
+
+  --bc-font-display: var(--font-onest), ui-sans-serif, system-ui, sans-serif;
+  --bc-font-mono: var(--font-mono), ui-monospace, monospace;
+
+  --bc-maxw: 1240px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100vh;
+  background-color: var(--bc-bg);
+  color: var(--bc-fg);
+  font-family: var(--bc-font-display);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#__next {
+  min-height: 100vh;
+}
+
+::selection {
+  background: var(--bc-accent);
+  color: var(--bc-accent-ink);
+}
+
+/* Shared brand utility classes ------------------------------------- */
+
+.bc-mono {
+  font-family: var(--bc-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bc-fg-muted);
+}
+
+.bc-shell {
+  width: 100%;
+  max-width: var(--bc-maxw);
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.bc-rule {
+  border: none;
+  border-top: 1px solid var(--bc-line);
+}
+
+.bc-link-underline {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--bc-fg);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.bc-link-underline:hover {
+  color: var(--bc-accent);
+}
+
+/* Big fluid display type used across hero + section headers */
+.bc-display {
+  font-family: var(--bc-font-display);
+  font-weight: 600;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  color: var(--bc-fg);
+}
+
+/* Motion ------------------------------------------------------------ */
+@keyframes bc-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes bc-eq {
+  0%,
+  100% {
+    transform: scaleY(0.25);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes bc-scan {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 40px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bc-marquee-track,
+  .bc-eq-bar {
+    animation: none !important;
+  }
+}
