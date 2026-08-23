@@ -49,8 +49,8 @@ export function Hero() {
   }
 
   return (
-    <section id="top" className="mx-auto max-w-6xl px-4 pb-10 pt-8 sm:px-5 sm:pb-14 sm:pt-14 md:px-8 md:pb-16 md:pt-20">
-      <div className="carbon-panel relative overflow-hidden px-4 py-5 sm:px-6 sm:py-7 md:px-10 md:py-10">
+    <section id="top" className="mx-auto max-w-6xl px-4 pb-8 pt-8 sm:px-5 sm:pb-12 sm:pt-12 md:px-8 md:pb-14 md:pt-16">
+      <div className="carbon-panel relative overflow-hidden border border-border px-4 py-5 sm:px-6 sm:py-7 md:px-9 md:py-9">
         <div className="pointer-events-none absolute right-0 top-0 h-28 w-28 border-l border-b border-lime/30 bg-lime/5 md:h-48 md:w-48" aria-hidden="true" />
         <div className="relative z-10 flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-border pb-5 sm:gap-x-6 sm:pb-6">
           <span className="label-mono text-lime">{t.eyebrow}</span>
@@ -58,7 +58,7 @@ export function Hero() {
           <span className="label-mono ml-auto hidden text-muted-foreground sm:inline">{t.audience}</span>
         </div>
 
-        <div className="relative z-10 grid gap-8 pt-10 md:grid-cols-[0.9fr_1.1fr] md:gap-10 md:pt-14">
+        <div className="relative z-10 grid gap-8 pt-9 md:grid-cols-[0.92fr_1.08fr] md:items-center md:gap-12 md:pt-12">
           <div className="flex flex-col justify-between gap-10">
             <Reveal>
               <p className="label-mono mb-5 text-lime/80">01 / sound identity</p>
@@ -91,7 +91,7 @@ export function Hero() {
           </Reveal>
         </div>
 
-        <Reveal delay={200} className="relative z-10 mt-10 border-t border-border pt-6 sm:mt-14 sm:pt-8">
+        <Reveal delay={200} className="relative z-10 mt-9 border-t border-border pt-6 sm:mt-12 sm:pt-8">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="label-mono mb-3 text-muted-foreground">{t.titleEnd}</p>

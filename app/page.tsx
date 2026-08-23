@@ -1,6 +1,5 @@
 import { SiteHeader } from '@/components/site-header'
 import { Hero } from '@/components/hero'
-import { WaveDivider } from '@/components/wave-divider'
 import { ProcessSteps } from '@/components/process-steps'
 import { SoundSkin } from '@/components/sound-skin'
 import { Analyse } from '@/components/analyse'
@@ -16,7 +15,6 @@ export default function Page() {
       <main className="site-shell relative isolate min-h-screen overflow-hidden bg-background">
         <SiteHeader />
         <Hero />
-        <WaveDivider />
         <ProcessSteps />
         <SoundSkin />
         <Analyse />
