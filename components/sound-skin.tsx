@@ -37,7 +37,7 @@ export function SoundSkin() {
   }
 
   return (
-    <section id="sound-skin" aria-labelledby="sound-skin-heading" className="carbon-surface rounded-[430px] border-y border-border">
+    <section id="sound-skin" aria-labelledby="sound-skin-heading" className="carbon-surface border-y border-border">
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-5 sm:py-16 md:px-8 md:py-24">
         <Reveal>
           <div className="flex flex-wrap items-end justify-between gap-4">
