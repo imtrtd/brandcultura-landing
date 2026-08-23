@@ -1,0 +1,4 @@
+'use client'
+import { useLocale } from './locale-provider'
+const hrefs = ['#sound-skin','#analyse','#dna','#kontakt']
+export function SiteFooter() { const { copy } = useLocale(); return <footer className="border-t border-border"><div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-8 md:flex-row md:items-center md:justify-between md:px-8"><div className="flex items-baseline gap-3"><span className="font-display text-lg font-bold tracking-tight">brandcultura</span><span className="label-mono text-muted-foreground">© 2026 · SHAPE YOUR SOUND</span></div><nav className="flex flex-wrap gap-x-6 gap-y-2" aria-label={copy.footer.aria}>{copy.footer.links.map((link,i) => <a key={hrefs[i]} href={hrefs[i]} className="label-mono text-muted-foreground transition-colors hover:text-foreground">{link}</a>)}</nav></div></footer> }

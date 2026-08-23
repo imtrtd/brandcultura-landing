@@ -1,0 +1,5 @@
+'use client'
+import { useLocale } from './locale-provider'
+import { Reveal } from './reveal'
+const hrefs = ['https://imtryingtodesign.com', '#kontakt']
+export function SystemDna() { const { copy } = useLocale(); return <section id="dna" aria-labelledby="dna-heading" className="mx-auto max-w-6xl px-4 py-14 sm:px-5 sm:py-16 md:px-8 md:py-24"><Reveal><h2 id="dna-heading" className="label-mono text-muted-foreground">{copy.dna.label}</h2></Reveal><div className="mt-8 grid grid-cols-1 gap-3 sm:mt-10 md:grid-cols-2">{copy.dna.people.map((person,i) => <Reveal key={person[1]} delay={i*90}><div className="carbon-panel signal-glow flex min-h-[260px] flex-col gap-4 p-5 sm:min-h-[294px] sm:p-6 md:p-8"><span className="label-mono text-lime">{person[0]}</span><h3 className="display break-words text-3xl font-bold text-foreground md:text-4xl">{person[1]}</h3><p className="text-sm leading-relaxed text-muted-foreground">{person[2]}</p><a href={hrefs[i]} className="mt-auto flex min-h-11 w-fit items-center font-mono text-sm text-foreground underline decoration-lime decoration-2 underline-offset-4 transition-colors hover:text-lime">{person[3]}</a></div></Reveal>)}</div></section> }
