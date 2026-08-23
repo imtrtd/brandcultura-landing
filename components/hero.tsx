@@ -5,6 +5,8 @@ import { useLocale } from './locale-provider'
 import { Reveal } from './reveal'
 import { useRef, useState, type CSSProperties, type PointerEvent } from 'react'
 
+const EQ_BARS = Array.from({ length: 24 })
+
 export function Hero() {
   const { copy } = useLocale()
   const t = copy.hero
@@ -49,62 +51,89 @@ export function Hero() {
   }
 
   return (
-    <section id="top" className="mx-auto max-w-6xl px-4 pb-8 pt-8 sm:px-5 sm:pb-12 sm:pt-12 md:px-8 md:pb-14 md:pt-16">
-      <div className="carbon-panel relative overflow-hidden border border-border px-4 py-5 sm:px-6 sm:py-7 md:px-9 md:py-9">
-        <div className="pointer-events-none absolute right-0 top-0 h-28 w-28 border-l border-b border-lime/30 bg-lime/5 md:h-48 md:w-48" aria-hidden="true" />
-        <div className="relative z-10 flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-border pb-5 sm:gap-x-6 sm:pb-6">
-          <span className="label-mono text-lime">{t.eyebrow}</span>
-          <span className="label-mono text-muted-foreground">{t.arts}</span>
-          <span className="label-mono ml-auto hidden text-muted-foreground sm:inline">{t.audience}</span>
-        </div>
+    <section id="top" className="mx-auto max-w-6xl px-4 pb-10 pt-8 sm:px-5 sm:pb-14 sm:pt-12 md:px-8 md:pb-20 md:pt-16">
+      {/* meta bar */}
+      <div className="flex flex-wrap items-center gap-x-5 gap-y-2 border-b border-border pb-4">
+        <span className="label-mono text-lime">{t.eyebrow}</span>
+        <span className="label-mono text-muted-foreground">{t.arts}</span>
+        <span className="label-mono ml-auto hidden text-muted-foreground sm:inline">{t.audience}</span>
+      </div>
 
-        <div className="relative z-10 grid gap-8 pt-9 md:grid-cols-[0.92fr_1.08fr] md:items-center md:gap-12 md:pt-12">
-          <div className="flex flex-col justify-between gap-10">
-            <Reveal>
-              <p className="label-mono mb-5 text-lime/80">01 / sound identity</p>
-              <h1 className="display max-w-[8ch] text-pretty text-[clamp(4rem,10vw,8.5rem)] font-extrabold leading-[0.84] tracking-[-0.07em] text-foreground">{t.title}<span className="text-lime">.</span></h1>
-            </Reveal>
-            <Reveal delay={100}>
-              <p className="max-w-sm text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">{t.intro} <span className="text-foreground">{t.emphasis}</span></p>
-            </Reveal>
-          </div>
+      {/* headline + equalizer */}
+      <div className="grid gap-8 pt-10 md:grid-cols-[1.15fr_0.85fr] md:items-end md:gap-10 md:pt-16">
+        <Reveal>
+          <p className="label-mono mb-6 text-lime/80">01 / sound identity</p>
+          <h1 className="display text-balance text-[clamp(3.4rem,11vw,9rem)] font-extrabold leading-[0.82] tracking-[-0.07em] text-foreground">
+            {t.title}{' '}
+            <span className="text-muted-foreground">{t.titleEnd}</span>
+            <span className="text-lime">.</span>
+          </h1>
+        </Reveal>
 
-          <Reveal delay={120} className="min-w-0">
-            <div className="carbon-surface relative overflow-hidden border border-border p-3 sm:p-4">
-              <div className="mb-3 flex items-center justify-between border-b border-border pb-3">
-                <span className="label-mono text-lime">01 · SIGNAL / FORM</span>
-                <span className="label-mono text-muted-foreground">{frequency} Hz</span>
-              </div>
-              <div role="application" aria-label="Interactive frequency controller" className="group relative aspect-[4/3] cursor-crosshair touch-none overflow-hidden border border-border bg-blue outline-none focus-visible:ring-2 focus-visible:ring-lime" style={{ '--frequency': `${frequency}Hz` } as CSSProperties} onPointerDown={startFrequency} onPointerMove={(event) => { if (event.buttons) updateFrequency(event) }} onPointerUp={stopFrequency} onPointerCancel={stopFrequency} tabIndex={0}>
-                <Image src="/images/spectrogram.png" alt={t.alt} fill priority sizes="(max-width: 767px) 100vw, 50vw" className="object-cover opacity-80 mix-blend-screen transition-transform duration-700 ease-out group-hover:scale-[1.03]" />
-                <div className="pointer-events-none absolute inset-0 bg-background/20" aria-hidden="true" />
-                <div className="pointer-events-none absolute inset-x-0 top-1/2 h-px bg-lime/70" aria-hidden="true" />
-                <div className="pointer-events-none absolute bottom-0 left-1/2 top-0 w-px origin-bottom bg-background/60 transition-transform duration-75" style={{ transform: `rotate(${(frequency - 520) / 8}deg)` }} aria-hidden="true" />
-                <span className="label-mono absolute bottom-3 left-3 text-background">{t.frequency}</span>
-                <span className="label-mono absolute bottom-3 right-3 text-background/70">drag / feel</span>
-              </div>
-              <div className="mt-3 flex items-center justify-between">
-                <span className="label-mono text-muted-foreground">60 / 24000 Hz</span>
-                <span className="label-mono text-lime">LIVE TRANSLATION</span>
-              </div>
+        <Reveal delay={120} className="min-w-0">
+          <div className="carbon-surface flex h-full flex-col justify-between gap-5 border border-border p-4 sm:p-5">
+            <div className="flex items-center justify-between">
+              <span className="label-mono text-lime">{t.signal}</span>
+              <span className="label-mono text-muted-foreground">{frequency} Hz</span>
             </div>
-          </Reveal>
-        </div>
-
-        <Reveal delay={200} className="relative z-10 mt-9 border-t border-border pt-6 sm:mt-12 sm:pt-8">
-          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="label-mono mb-3 text-muted-foreground">{t.titleEnd}</p>
-              <h2 className="display text-[clamp(3rem,8vw,7rem)] font-extrabold leading-[0.84] tracking-[-0.07em] text-foreground">{t.titleEnd}<span className="text-lime">.</span></h2>
+            {/* signature live equalizer */}
+            <div className="flex h-24 items-end gap-1 sm:h-28" aria-hidden="true">
+              {EQ_BARS.map((_, i) => (
+                <span
+                  key={i}
+                  className="eq-bar flex-1 rounded-sm bg-lime/80"
+                  style={{ height: '100%', animationDelay: `${(i % 8) * 0.11}s`, animationDuration: `${1 + (i % 5) * 0.14}s` }}
+                />
+              ))}
             </div>
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <a href="#kontakt" className="flex min-h-12 items-center justify-center bg-lime px-6 py-3 text-sm font-semibold text-lime-foreground transition-transform hover:-translate-y-0.5 hover:opacity-90">{t.discuss}<span className="ml-2" aria-hidden="true">→</span></a>
-              <a href="#analyse" className="flex min-h-12 items-center justify-center border border-border px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-lime hover:text-lime">{t.spectrum}</a>
-            </div>
+            <p className="text-pretty text-sm leading-relaxed text-muted-foreground">
+              {t.intro} <span className="text-foreground">{t.emphasis}</span>
+            </p>
           </div>
         </Reveal>
       </div>
-      <div className="mt-3 flex items-center gap-3 px-1 sm:mt-4"><span className="h-px flex-1 bg-lime/70" aria-hidden="true" /><span className="label-mono text-muted-foreground">{t.eyebrow} / 2026</span></div>
+
+      {/* wide interactive frequency console */}
+      <Reveal delay={160} className="mt-10 sm:mt-14">
+        <div
+          role="application"
+          aria-label="Interactive frequency controller"
+          className="group relative aspect-[16/7] cursor-crosshair touch-none overflow-hidden border border-border bg-blue outline-none focus-visible:ring-2 focus-visible:ring-lime"
+          style={{ '--frequency': `${frequency}Hz` } as CSSProperties}
+          onPointerDown={startFrequency}
+          onPointerMove={(event) => { if (event.buttons) updateFrequency(event) }}
+          onPointerUp={stopFrequency}
+          onPointerCancel={stopFrequency}
+          tabIndex={0}
+        >
+          <Image src="/images/spectrogram.png" alt={t.alt} fill priority sizes="(max-width: 1152px) 100vw, 1088px" className="object-cover opacity-80 mix-blend-screen transition-transform duration-700 ease-out group-hover:scale-[1.03]" />
+          <div className="pointer-events-none absolute inset-0 bg-background/20" aria-hidden="true" />
+          <div className="pointer-events-none absolute inset-x-0 top-1/2 h-px bg-lime/70" aria-hidden="true" />
+          <div className="pointer-events-none absolute bottom-0 left-1/2 top-0 w-px origin-bottom bg-background/60 transition-transform duration-75" style={{ transform: `rotate(${(frequency - 520) / 8}deg)` }} aria-hidden="true" />
+          <span className="label-mono absolute left-4 top-4 text-background">{t.frequency}</span>
+          <span className="label-mono absolute right-4 top-4 text-background/70">drag / feel</span>
+          <span className="label-mono absolute bottom-4 left-4 text-background/70">60 / 24000 Hz</span>
+          <span className="label-mono absolute bottom-4 right-4 text-lime">LIVE TRANSLATION</span>
+        </div>
+      </Reveal>
+
+      {/* bottom action + metrics */}
+      <Reveal delay={220} className="mt-10 border-t border-border pt-8 sm:mt-14">
+        <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end md:gap-12">
+          <dl className="grid grid-cols-3 gap-4 sm:gap-8">
+            {[['20 Hz – 20 kHz', t.frequency], ['∞', t.titleEnd], ['2026', t.eyebrow]].map(([value, label]) => (
+              <div key={value} className="border-l border-lime/40 pl-3 sm:pl-4">
+                <dt className="display text-2xl font-extrabold leading-none tracking-tight text-foreground sm:text-4xl">{value}</dt>
+                <dd className="label-mono mt-2 text-muted-foreground">{label}</dd>
+              </div>
+            ))}
+          </dl>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <a href="#kontakt" className="flex min-h-12 items-center justify-center bg-lime px-6 py-3 text-sm font-semibold text-lime-foreground transition-transform hover:-translate-y-0.5 hover:opacity-90">{t.discuss}</a>
+            <a href="#analyse" className="flex min-h-12 items-center justify-center border border-border px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-lime hover:text-lime">{t.spectrum}</a>
+          </div>
+        </div>
+      </Reveal>
     </section>
   )
 }
