@@ -1,31 +1,30 @@
-import { SiteHeader } from '@/components/site/site-header'
-import { Hero } from '@/components/site/hero'
-import { Process } from '@/components/site/process'
-import { Marquee } from '@/components/site/marquee'
-import { SoundSkin } from '@/components/site/sound-skin'
-import { Spectrogram } from '@/components/site/spectrogram'
-import { Shape } from '@/components/site/shape'
-import { Disciplines } from '@/components/site/disciplines'
-import { Team } from '@/components/site/team'
-import { Contact } from '@/components/site/contact'
-import { SiteFooter } from '@/components/site/site-footer'
+import { SiteHeader } from '@/components/site-header'
+import { Hero } from '@/components/hero'
+import { WaveDivider } from '@/components/wave-divider'
+import { ProcessSteps } from '@/components/process-steps'
+import { SoundSkin } from '@/components/sound-skin'
+import { Analyse } from '@/components/analyse'
+import { ShapeYourSound } from '@/components/shape-your-sound'
+import { SystemDna } from '@/components/system-dna'
+import { Contact } from '@/components/contact'
+import { SiteFooter } from '@/components/site-footer'
+import { LocaleProvider } from '@/components/locale-provider'
 
 export default function Page() {
   return (
-    <>
-      <SiteHeader />
-      <main>
+    <LocaleProvider>
+      <main className="site-shell relative isolate min-h-screen overflow-hidden bg-background">
+        <SiteHeader />
         <Hero />
-        <Process />
-        <Marquee />
+        <WaveDivider />
+        <ProcessSteps />
         <SoundSkin />
-        <Spectrogram />
-        <Shape />
-        <Disciplines />
-        <Team />
+        <Analyse />
+        <ShapeYourSound />
+        <SystemDna />
         <Contact />
+        <SiteFooter />
       </main>
-      <SiteFooter />
-    </>
+    </LocaleProvider>
   )
 }
