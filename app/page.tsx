@@ -1,5 +1,4 @@
 import { SiteHeader } from '@/components/site/site-header'
-import { Hero } from '@/components/site/hero'
 import { Process } from '@/components/site/process'
 import { Marquee } from '@/components/site/marquee'
 import { SoundSkin } from '@/components/site/sound-skin'
@@ -15,7 +14,6 @@ export default function Page() {
     <>
       <SiteHeader />
       <main>
-        <Hero />
         <Process />
         <Marquee />
         <SoundSkin />
