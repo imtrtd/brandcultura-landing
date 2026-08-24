@@ -1,54 +1,16 @@
 'use client'
 
-import Image from 'next/image'
 import { useLocale } from './locale-provider'
 import { Reveal } from './reveal'
-import { useRef, useState, type CSSProperties, type PointerEvent } from 'react'
+import { DrumMachine } from './drum-machine'
+import { useState } from 'react'
 
 const EQ_BARS = Array.from({ length: 24 })
 
 export function Hero() {
   const { copy } = useLocale()
   const t = copy.hero
-  const [frequency, setFrequency] = useState(440)
-  const audioRef = useRef<{ context: AudioContext; oscillator: OscillatorNode; gain: GainNode } | null>(null)
-
-  function updateFrequency(event: PointerEvent<HTMLDivElement>) {
-    const rect = event.currentTarget.getBoundingClientRect()
-    const x = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width))
-    const y = Math.min(1, Math.max(0, (event.clientY - rect.top) / rect.height))
-    const nextFrequency = Math.round(80 + x * 880 + (1 - y) * 120)
-    setFrequency(nextFrequency)
-    const active = audioRef.current
-    if (active) {
-      active.oscillator.frequency.setTargetAtTime(nextFrequency, active.context.currentTime, 0.025)
-      active.gain.gain.setTargetAtTime(0.018 + (1 - y) * 0.012, active.context.currentTime, 0.04)
-    }
-  }
-
-  function startFrequency(event: PointerEvent<HTMLDivElement>) {
-    event.currentTarget.setPointerCapture(event.pointerId)
-    const AudioContextClass = window.AudioContext || window.webkitAudioContext
-    const context = new AudioContextClass()
-    const oscillator = context.createOscillator()
-    const gain = context.createGain()
-    oscillator.type = 'sine'
-    gain.gain.value = 0.0001
-    oscillator.connect(gain).connect(context.destination)
-    oscillator.start()
-    audioRef.current = { context, oscillator, gain }
-    updateFrequency(event)
-  }
-
-  function stopFrequency(event: PointerEvent<HTMLDivElement>) {
-    if (!audioRef.current) return
-    const { context, oscillator, gain } = audioRef.current
-    gain.gain.setTargetAtTime(0.0001, context.currentTime, 0.04)
-    oscillator.stop(context.currentTime + 0.18)
-    void context.close()
-    audioRef.current = null
-    event.currentTarget.releasePointerCapture?.(event.pointerId)
-  }
+  const [frequency] = useState(440)
 
   return (
     <section id="top" className="mx-auto max-w-6xl px-4 pb-10 pt-8 sm:px-5 sm:pb-14 sm:pt-12 md:px-8 md:pb-20 md:pt-16">
@@ -81,7 +43,7 @@ export function Hero() {
               {EQ_BARS.map((_, i) => (
                 <span
                   key={i}
-                  className="eq-bar flex-1 rounded-sm bg-lime/80"
+                  className="eq-bar flex-1 bg-lime/80"
                   style={{ height: '100%', animationDelay: `${(i % 8) * 0.11}s`, animationDuration: `${1 + (i % 5) * 0.14}s` }}
                 />
               ))}
@@ -93,29 +55,8 @@ export function Hero() {
         </Reveal>
       </div>
 
-      {/* wide interactive frequency console */}
-      <Reveal delay={160} className="mt-10 sm:mt-14">
-        <div
-          role="application"
-          aria-label="Interactive frequency controller"
-          className="group relative aspect-[16/7] cursor-crosshair touch-none overflow-hidden border border-border bg-blue outline-none focus-visible:ring-2 focus-visible:ring-lime"
-          style={{ '--frequency': `${frequency}Hz` } as CSSProperties}
-          onPointerDown={startFrequency}
-          onPointerMove={(event) => { if (event.buttons) updateFrequency(event) }}
-          onPointerUp={stopFrequency}
-          onPointerCancel={stopFrequency}
-          tabIndex={0}
-        >
-          <Image src="/images/spectrogram.png" alt={t.alt} fill priority sizes="(max-width: 1152px) 100vw, 1088px" className="object-cover opacity-80 mix-blend-screen transition-transform duration-700 ease-out group-hover:scale-[1.03]" />
-          <div className="pointer-events-none absolute inset-0 bg-background/20" aria-hidden="true" />
-          <div className="pointer-events-none absolute inset-x-0 top-1/2 h-px bg-lime/70" aria-hidden="true" />
-          <div className="pointer-events-none absolute bottom-0 left-1/2 top-0 w-px origin-bottom bg-background/60 transition-transform duration-75" style={{ transform: `rotate(${(frequency - 520) / 8}deg)` }} aria-hidden="true" />
-          <span className="label-mono absolute left-4 top-4 text-background">{t.frequency}</span>
-          <span className="label-mono absolute right-4 top-4 text-background/70">drag / feel</span>
-          <span className="label-mono absolute bottom-4 left-4 text-background/70">60 / 24000 Hz</span>
-          <span className="label-mono absolute bottom-4 right-4 text-lime">LIVE TRANSLATION</span>
-        </div>
-      </Reveal>
+      {/* Drum Machine + Looper (replaces spectrogram) */}
+      <DrumMachine />
 
       {/* bottom action + metrics */}
       <Reveal delay={220} className="mt-10 border-t border-border pt-8 sm:mt-14">
