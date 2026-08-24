@@ -10,6 +10,8 @@
   --font-mono: var(--font-plex-mono), ui-monospace, monospace;
   --color-lime: var(--lime);
   --color-lime-foreground: var(--lime-foreground);
+  --color-pink: var(--pink);
+  --color-pink-foreground: var(--pink-foreground);
   --color-blue: var(--blue);
   --color-orange: var(--orange);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -74,6 +76,8 @@
   --ring: oklch(0.895 0.19 118);
   --lime: oklch(0.895 0.19 118);
   --lime-foreground: oklch(0.16 0.03 118);
+  --pink: oklch(0.78 0.18 350);
+  --pink-foreground: oklch(0.18 0.04 350);
   --blue: oklch(0.52 0.24 274);
   --orange: oklch(0.63 0.2 32);
   --chart-1: oklch(0.895 0.19 118);
@@ -112,6 +116,10 @@
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.556 0 0);
+  --lime: oklch(0.895 0.19 118);
+  --lime-foreground: oklch(0.16 0.03 118);
+  --pink: oklch(0.78 0.18 350);
+  --pink-foreground: oklch(0.18 0.04 350);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -148,6 +156,10 @@
     --border: oklch(1 0 0 / 10%);
     --input: oklch(1 0 0 / 15%);
     --ring: oklch(0.556 0 0);
+    --lime: oklch(0.895 0.19 118);
+    --lime-foreground: oklch(0.16 0.03 118);
+    --pink: oklch(0.78 0.18 350);
+    --pink-foreground: oklch(0.18 0.04 350);
     --chart-1: oklch(0.87 0 0);
     --chart-2: oklch(0.556 0 0);
     --chart-3: oklch(0.439 0 0);
