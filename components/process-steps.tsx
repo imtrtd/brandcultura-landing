@@ -25,7 +25,6 @@ export function ProcessSteps() {
         </div>
       </Reveal>
 
-      {/* animated timeline connector (desktop) */}
       <Reveal delay={80}>
         <div className="mt-10 hidden items-center gap-3 md:flex" aria-hidden>
           {t.steps.map((step, i) => (
@@ -37,7 +36,7 @@ export function ProcessSteps() {
               >
                 {step[0]}
               </span>
-              {i < t.steps.length - 1 && <span className="timeline-track h-px flex-1 bg-border" />}
+              {i < t.steps.length - 1 && <span className="timeline-track h-px flex-1 bg-lime/30" />}
             </div>
           ))}
         </div>
@@ -46,17 +45,17 @@ export function ProcessSteps() {
       <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 md:mt-6 md:grid-cols-3">
         {t.steps.map((step, i) => (
           <Reveal key={step[0]} delay={i * 90}>
-            <div className="carbon-panel flex min-h-full flex-col gap-4 p-5 transition-colors hover:border-lime sm:min-h-64 sm:p-6">
+            <div className="carbon-panel flex min-h-full flex-col gap-4 border-lime/45 p-5 transition-colors hover:border-lime sm:min-h-64 sm:p-6">
               <div className="flex items-center justify-between">
                 <span className="node-pulse grid h-8 w-8 place-items-center rounded-full border border-lime font-mono text-xs text-lime md:hidden">
                   {step[0]}
                 </span>
                 <span className="label-mono hidden text-muted-foreground md:block">{step[0]}</span>
-                <span className="label-mono rounded-sm border border-border px-2 py-1 text-lime">{step[3]}</span>
+                <span className="label-mono border border-lime/40 px-2 py-1 text-lime">{step[3]}</span>
               </div>
               <h3 className="text-xl font-semibold leading-tight text-lime sm:text-2xl">{step[1]}</h3>
               <p className="text-sm leading-relaxed text-muted-foreground">{step[2]}</p>
-              <span className="mt-auto block h-1 w-full origin-left bg-gradient-to-r from-lime/70 to-transparent" aria-hidden />
+              <span className="mt-auto block h-1 w-full origin-left bg-gradient-to-r from-lime to-transparent" aria-hidden />
             </div>
           </Reveal>
         ))}
@@ -73,7 +72,7 @@ export function ProcessSteps() {
               {Array.from({ length: 10 }).map((_, i) => (
                 <span
                   key={i}
-                  className="eq-bar block w-1 rounded-sm bg-background/80"
+                  className="eq-bar block w-1 bg-background/80"
                   style={{
                     height: `${16 + Math.abs(Math.sin(i * 1.7)) * 26}px`,
                     animationDelay: `${(i % 6) * 110}ms`,
