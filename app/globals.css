@@ -312,6 +312,16 @@
   .site-shell::before { animation: none; }
 }
 
+#signal,
+#sound-skin,
+#analyse,
+#shape,
+#dna,
+#kontakt,
+#top {
+  scroll-margin-top: 5rem;
+}
+
 @utility display {
   font-family: var(--font-display);
   letter-spacing: -0.02em;
