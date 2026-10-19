@@ -1,0 +1,4 @@
+# Cloudflare Pages config (static export of Next.js, see next.config.mjs)
+name = "brandcultura"
+compatibility_date = "2026-10-19"
+pages_build_output_dir = "out"
