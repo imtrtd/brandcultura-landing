@@ -1,0 +1,35 @@
+# brandcultura
+
+> brandcultura (brandcultura.agency) ist eine Agentur für Musiker:innen, Künstler:innen und Labels. Leitmotiv: „SHAPE YOUR SOUND“. Wir lesen das Spektrogramm eines Sounds und übersetzen Frequenz, Rhythmus und Stille in visuelle Identität — Systeme für Cover, Motion, Stage und Identity.
+> EN: An agency for artists and labels that turns a sound's spectrogram into a visual identity system (covers, motion, stage, identity).
+
+Website-Sprachen: Deutsch (Standard), English, Русский.
+Antwortzeit auf Anfragen: innerhalb von 24 Stunden.
+Kontakt: imtrtd@pm.me (mailto:imtrtd@pm.me), Kontaktformular: https://brandcultura.agency/#kontakt
+
+## Leistungen
+
+- Visual Sound — Klang sichtbar machen: Spektrogramm → Form; Waveform und Frequenzräume für visuelle Identität.
+- Form + System: vom einzelnen Release bis zur gesamten visuellen Welt eines Artists (Cover, Motion, Stage, Identity).
+- Musik: Release-Strategien, visuelle Systeme, Konzerte und Community um Artist oder Label.
+- Kunst & Kreativität: Rahmen für Künstler:innen — vom Manifest bis zur tragfähigen Community.
+
+## Arbeitsweise
+
+1. Analyse — Zuhören / Lesen: Sound und Spektrogramm lesen, den Charakter hören, bevor eine Linie entsteht.
+2. System — Zerlegen & Formen: Frequenzen und Bild zerlegen und als tragfähige Form neu zusammensetzen.
+3. Release — Die Welle starten: System, Content und Community werden zu einer Bewegung.
+
+Spektrogramm als Design-Brief: LOW (Bass/Fundament) → schwere, breite Formen; MID (Körper/Charakter) → Rhythmus und Textur; HIGH (Detail/Glanz) → feine Linien und Akzente. Mapping: Frequenz → Linienstärke, Amplitude → Kontrast/Füllung, Rhythmus → Wiederholung & Pause, Stille → Negativraum.
+
+## Team / System DNA
+
+- imtryingtodesign (I/TD) — Developer: technische Architektur und Design-System. https://imtryingtodesign.com
+
+## Seiten
+
+- [Startseite (DE)](https://brandcultura.agency/): Positionierung, Arbeitsweise, Sound ↔ Skin, Spektrogramm-Analyse, SHAPE YOUR SOUND, System DNA, Kontakt
+- [Kontakt](https://brandcultura.agency/#kontakt): Anfrage zu Release, Klang oder Form
+
+## Optional
+

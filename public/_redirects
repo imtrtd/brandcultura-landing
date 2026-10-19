@@ -1,6 +1,14 @@
-# Cloudflare Pages redirects (path-based only).
-#
-# NOTE: Pages _redirects cannot match on hostname, so the
-# brandcultura.agency -> brandcultura.art redirect can NOT live here.
-# See CLOUDFLARE.md ("Domain redirect") for how to do it with a
-# Cloudflare Redirect Rule / Bulk Redirect once the domains are on Cloudflare.
+# Cloudflare Pages _redirects — ЗАМЕНА public/_redirects.
+# Матчит только пути (не хосты). www -> apex и .pages.dev -> домен делаются в Cloudflare (docs/redirect-rules.md).
+# /index и /index.html -> / уже работают (308 от Pages), дублировать не нужно.
+
+# Частые «угадываемые» URL, которые сейчас дают 404. Раскомментировать ТОЛЬКО когда цель существует:
+# /kontakt      /#kontakt   301
+# /contact      /#kontakt   301
+# /imprint      /impressum  301
+# /privacy      /datenschutz 301
+# /de           /           301
+# /de/*         /:splat     301
+
+# Если сделаны отдельные языковые URL (docs/i18n-routing.md), старые «?lang=» не нужны:
+# параметр сейчас игнорируется сервером и дублей не создаёт.

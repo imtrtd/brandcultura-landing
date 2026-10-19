@@ -31,7 +31,7 @@ export function ShapeYourSound() {
           <Reveal className="lg:col-span-7">
             <div className="carbon-panel signal-glow signal-scan group relative aspect-[16/10] overflow-hidden">
               <Image
-                src="/images/shape-your-sound.png"
+                src="/images/shape-your-sound.webp"
                 alt={t.alt}
                 fill
                 sizes="(max-width: 1023px) 100vw, 58vw"
