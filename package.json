@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "pages:build": "next build",
+    "pages:preview": "pnpm dlx wrangler@4 pages dev out",
+    "pages:deploy": "pnpm dlx wrangler@4 pages deploy out --project-name brandcultura"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
