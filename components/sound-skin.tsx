@@ -65,7 +65,7 @@ export function SoundSkin() {
               className="carbon-panel signal-glow signal-scan group relative aspect-[4/3] cursor-pointer overflow-hidden outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-background lg:aspect-auto lg:h-full lg:min-h-[26rem]"
             >
               <Image
-                src="/images/sound-skin-waveform.png"
+                src="/images/sound-skin-waveform.webp"
                 alt={t.alt}
                 fill
                 sizes="(max-width: 1023px) 100vw, 55vw"

@@ -1,3 +1,26 @@
-# Cloudflare Pages headers. Next.js hashed build assets are immutable.
+# Cloudflare Pages headers — ЗАМЕНА public/_headers в репозитории.
+
+# 1) Хешированные ассеты Next.js — вечный кэш (как было)
 /_next/static/*
   Cache-Control: public, max-age=31536000, immutable
+
+# 2) Картинки без хеша в имени — 30 дней (сейчас 4 часа)
+/images/*
+  Cache-Control: public, max-age=2592000
+
+# 3) HSTS. Начать с короткого max-age (5 мин), проверить, что всё открывается по https,
+#    затем поднять до 31536000 (1 год). includeSubDomains — только если ВСЕ поддомены на https.
+/*
+  Strict-Transport-Security: max-age=300
+
+# 4) Дубль сайта на *.pages.dev не должен индексироваться
+#    (лучше дополнительно сделать 301 через Bulk Redirects — docs/redirect-rules.md)
+https://brandcultura.pages.dev/*
+  X-Robots-Tag: noindex
+https://:version.brandcultura.pages.dev/*
+  X-Robots-Tag: noindex
+
+# 5) Текстовые файлы для ботов
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600

@@ -1,3 +1,4 @@
+// TODO(owner): contact email unknown in repo — add visible email + mailto fallback once provided. Form currently has no backend handler (see PR).
 'use client'
 import { useState } from 'react'
 import { useLocale } from './locale-provider'
