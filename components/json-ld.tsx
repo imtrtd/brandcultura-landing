@@ -1,6 +1,6 @@
 // components/json-ld.tsx — вывод JSON-LD в статический HTML (работает со static export).
-// Подключается в app/layout.tsx. Неизвестные поля (email, address, founder, sameAs, priceRange) намеренно опущены — TODO владельца.
-import { SITE_URL } from '@/lib/site'
+// Подключается в app/layout.tsx. Неизвестные поля (address, founder, sameAs, priceRange) намеренно опущены — TODO владельца.
+import { CONTACT_EMAIL, SITE_URL } from '@/lib/site'
 
 const organization = {
   '@context': 'https://schema.org',
@@ -16,8 +16,9 @@ const organization = {
   image: `${SITE_URL}/og-image.jpg`,
   knowsLanguage: ['de', 'en', 'ru'],
   audience: { '@type': 'Audience', audienceType: 'Musiker:innen, Künstler:innen und Labels' },
+  email: CONTACT_EMAIL,
   // Раскомментировать после заполнения (см. jsonld/organization.json):
-  // areaServed: '…', email: '…', priceRange: '…', founder: {...}, address: {...}, sameAs: [...],
+  // areaServed: '…', priceRange: '…', founder: {...}, address: {...}, sameAs: [...],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Leistungen',

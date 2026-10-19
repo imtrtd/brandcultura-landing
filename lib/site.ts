@@ -5,3 +5,4 @@ export const SITE_URL = 'https://brandcultura.agency'
 export const SITE_NAME = 'brandcultura'
 export const LOCALES = ['de', 'en', 'ru'] as const
 export type Locale = (typeof LOCALES)[number]
+export const CONTACT_EMAIL = 'imtrtd@pm.me'
